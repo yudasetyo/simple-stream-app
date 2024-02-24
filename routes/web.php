@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function () 
     });
 });
 
+Route::view('/', 'index');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
