@@ -106,6 +106,12 @@ class MovieController extends Controller
 
         $movie->update($data);
 
-        return redirect()->route('admin.movie')->with('success', 'Movie edited');
+        return redirect()->route('admin.movie')->with('success', 'Movie updated');
+    }
+
+    public function destroy($id) {
+        Movie::find($id)->Delete();
+
+        return redirect()->route('admin.movie')->with('success', 'Movie deleted');
     }
 }
