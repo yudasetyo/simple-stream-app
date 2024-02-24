@@ -27,9 +27,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function () 
         Route::get('/', [MovieController::class, 'index'])->name('admin.movie');
         Route::get('/create', [MovieController::class, 'create'])->name('admin.movie.create');
         Route::post('/store', [MovieController::class, 'store'])->name('admin.movie.store');
-        Route::get('/edit/{id}', [MovieController::class, 'edit'])->name('admin.movie.edit');
-        Route::put('/update/{id}', [MovieController::class, 'update'])->name('admin.movie.update');
-        Route::delete('/destroy/{id}', [MovieController::class, 'destroy'])->name('admin.movie.destroy');
+        Route::get('/edit/{id}', [MovieController::Class, 'edit'])->name('admin.movie.edit');
+        Route::put('/update/{id}', [MovieController::Class, 'update'])->name('admin.movie.update');
     });
 });
 
