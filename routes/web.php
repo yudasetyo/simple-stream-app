@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function () 
         Route::post('/store', [MovieController::class, 'store'])->name('admin.movie.store');
         Route::get('/edit/{id}', [MovieController::Class, 'edit'])->name('admin.movie.edit');
         Route::put('/update/{id}', [MovieController::Class, 'update'])->name('admin.movie.update');
+        Route::put('/destroy/{id}', [MovieController::Class, 'destroy'])->name('admin.movie.destroy');
     });
 });
 
@@ -41,3 +43,7 @@ Route::post('/register', [RegisterController::class, 'store'])->name('member.reg
 
 Route::get('/login', [MemberLoginController::class, 'index'])->name('member.login');
 Route::post('/login', [MemberLoginController::class, 'auth'])->name('member.login.auth');
+
+Route::group(['prefix' => 'member'], function() {
+    Route::get('/', [DashboardController::class, 'index'])->name('member.dashboard');
+});
